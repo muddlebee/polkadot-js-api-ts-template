@@ -21,6 +21,10 @@ async function main() {
 	const provider = new WsProvider(options.endpoint);
 	const api = await ApiPromise.create({ provider });
 
+	const chainInfo = await api.registry
+	console.log(`chainDecimals #${chainInfo.chainDecimals}`);
+	console.log(`chainTokens #${chainInfo.chainTokens}`);
+	
 	console.log(
 		`Connected to node: ${options.endpoint} ${(await api.rpc.system.chain()).toHuman()} [ss58: ${api.registry.chainSS58
 		}]`

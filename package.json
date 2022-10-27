@@ -34,7 +34,7 @@
 		"rimraf": "^3.0.2"
 	},
 	"dependencies": {
-		"@polkadot/api": "9.2.4",
+		"@polkadot/api": "9.6.1",
 		"yargs": "^17.5.1"
 	}
 }
