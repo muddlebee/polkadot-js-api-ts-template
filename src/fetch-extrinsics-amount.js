@@ -10,7 +10,7 @@ import { BN, formatBalance } from '@polkadot/util';
 const optionsPromise = yargs(hideBin(process.argv)).option('endpoint', {
 	alias: 'e',
 	type: 'string',
-	default: 'wss://polkadot.api.onfinality.io/public-ws',
+	default: 'wss://rpc.polkadot.io',
 	description: 'the wss endpoint. It must allow unsafe RPCs.',
 	required: true
 }).argv;
@@ -41,7 +41,7 @@ signedBlock.block.extrinsics.forEach(({ method: { method, section } }, index) =>
     // test the events against the specific types we are looking for
     .forEach(({ event }) => {
         
-        if(method === 'transfer'){
+        if(event.method === 'Transfer'){
           if(event.data.hasOwnProperty('amount')){
             console.log(`${section}.${method}:: ExtrinsicSuccess:: ${JSON.stringify(event.toHuman())}`);
             const defaults = formatBalance.getDefaults();
